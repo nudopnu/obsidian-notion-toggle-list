@@ -1,0 +1,54 @@
+/* Remove the box around the collapsible and make it inline */
+.callout[data-callout="collapse"] {
+    border: none; /* No border */
+    background-color: transparent; /* Transparent background */
+    padding: 4px 0 0; /* No padding */
+    margin: 0 10px 0 0; /* Add space between items */
+    display: inline-block; /* Align callouts horizontally */
+    cursor: pointer;
+}
+
+/* Title style (no icon, normal text color, inline) */
+.callout[data-callout="collapse"] > .callout-title {
+    font-weight: normal;
+    padding: 0 5px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-normal); /* Normal text color */
+    font-size: 16px;
+}
+
+/* Remove callout icon completely */
+.callout[data-callout="collapse"] .callout-title .callout-icon {
+    display: none;
+}
+
+/* Remove expand icon completely */
+.callout[data-callout="collapse"] .callout-fold {
+    display: none;
+}
+
+/* Adjust folding arrow to match <details> style */
+.callout[data-callout="collapse"] > .callout-title::before {
+    content: "▶ "; /* Collapsed state */
+    font-size: 12px;
+    margin-right: 5px;
+    padding-top: 3px;
+}
+
+.callout[data-callout="collapse"]:not(.is-collapsed) > .callout-title::before {
+    content: "▼ "; /* Expanded state */
+}
+
+/* Remove unnecessary padding and margins in the content */
+.callout[data-callout="collapse"] > .callout-content {
+    padding: 5px 10px;
+    color: var(--text-normal); /* Normal content text color */
+}
+
+/* Hides next line after a callout */
+.cm-callout:has(.callout[data-callout="collapse"]) + .cm-line {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+}
